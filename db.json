@@ -55,6 +55,12 @@
       "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
       "price": 1099,
       "image": "https://www.phone-x.co.ke/wp-content/uploads/2021/06/HP-Pavilion-x360-Convertible.jpg"
+    },
+    {
+      "title": "HP envy",
+      "image": "HP envy",
+      "description": "HP envy",
+      "id": 9
     }
   ]
 }

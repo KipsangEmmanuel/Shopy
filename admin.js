@@ -15,8 +15,10 @@ function displayProducts(product) {
 }
 
 // fetching data from the db
+// the endpoint here is products
+let base_URL = 'http://localhost:3000'
 function fetchProduct() {
-    fetch('http://localhost:3000/products')
+    fetch(`${base_URL}/products`)
     .then((res) => res.json())
     .then(products => 
         products.forEach((product) => {
@@ -26,16 +28,32 @@ function fetchProduct() {
 fetchProduct()
 
 // function to collect the form data
+//GET
+let formData;
 function collectFormData () {
     let form = document.querySelector('#form')
     form.addEventListener('submit', (e) => {
         e.preventDefault()
-        let formData = {
+        formData = {
             title: e.target.name.value,
             image: e.target.name.value,
             description: e.target.name.value
         }
-        console.log(formData)
+        postProducts()
     })
 }
 collectFormData();
+
+// POST
+// 
+function postProducts() {
+    fetch(`${base_URL}/products`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+    })
+    .then((res) => res.json())
+    .then(products => console.log(products))
+}
