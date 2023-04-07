@@ -12,6 +12,9 @@ function displayProducts(product) {
     <td><button class="btn btn-light" style="background-color: red;" id="delete">Delete</button></td>
     `
     document.querySelector('#table-body').append(tableRow)
+    tableRow.querySelector('#edit').addEventListener('click', () => {
+        updatePrice(product.id)
+    })
     tableRow.querySelector('#delete').addEventListener('click', () => {
         tableRow.remove()
         deleteRecord(product.id)
@@ -74,3 +77,19 @@ function deleteRecord(id) {
     .then((res) => res.json())
     .then(data => console.log(data))
 }
+
+// PATCH
+//updating the product details
+
+function updatePrice(id) {
+    fetch(`${base_URL}/products/${id}`, {
+        method: 'PATCH',
+        headers: {
+            "Content-Type": "apllication/json"
+        },
+        body: JSON.stringify({
+            price: 150000
+        })
+    })
+    .then((res) => res.json())
+    .then(data => console.log(data))}
