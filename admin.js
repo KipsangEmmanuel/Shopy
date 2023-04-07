@@ -24,3 +24,18 @@ function fetchProduct() {
         }))
 }
 fetchProduct()
+
+// function to collect the form data
+function collectFormData () {
+    let form = document.querySelector('#form')
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let formData = {
+            title: e.target.name.value,
+            image: e.target.name.value,
+            description: e.target.name.value
+        }
+        console.log(formData)
+    })
+}
+collectFormData();
