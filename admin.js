@@ -12,6 +12,10 @@ function displayProducts(product) {
     <td><button class="btn btn-light" style="background-color: red;" id="delete">Delete</button></td>
     `
     document.querySelector('#table-body').append(tableRow)
+    tableRow.querySelector('#delete').addEventListener('click', () => {
+        tableRow.remove()
+        deleteRecord(product.id)
+    })
 }
 
 // fetching data from the db
@@ -56,4 +60,17 @@ function postProducts() {
     })
     .then((res) => res.json())
     .then(products => console.log(products))
+}
+
+// DELETE
+// base_URL/products/id (Here we target the specific id rather than deleting everything)
+function deleteRecord(id) {
+    fetch(`${base_URL}/products/${id}`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "apllication/json"
+        }
+    })
+    .then((res) => res.json())
+    .then(data => console.log(data))
 }
