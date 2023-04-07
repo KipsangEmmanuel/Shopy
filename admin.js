@@ -1,5 +1,5 @@
 // attach data from the db
-function displayProduct() {
+function displayProducts(product) {
     let tableRow = document.createElement("tr")
     tableRow.id = "table-row"
     tableRow.innerHTML = `
@@ -12,12 +12,15 @@ function displayProduct() {
     <td><button class="btn btn-light" style="background-color: red;" id="delete">Delete</button></td>
     `
     document.querySelector('#table-body').append(tableRow)
-    tableRow.querySelector("#edit").addEventListener('click', () => {
-        // updatePrice(product.id)
-    })
-
-    tableRow.querySelector("#delete").addEventListener('click', () => {
-        tableRow.remove()
-        //deleteRecord(product.id)
-    })
 }
+
+// fetching data from the db
+function fetchProduct() {
+    fetch('http://localhost:3000/products')
+    .then((res) => res.json())
+    .then(products => 
+        products.forEach((product) => {
+            displayProducts(product)
+        }))
+}
+fetchProduct()
