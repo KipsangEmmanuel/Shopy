@@ -8,7 +8,7 @@ function displayProducts(product) {
     <td>${product.description}</td>
     <td>${product.image}</td>
     <td>${product.price}</td>
-    <td><button class="btn" id="edit">Edit</button></td>
+    <td><button class="btn" id="edit" style="background-color: orange;">Edit</button></td>
     <td><button class="btn btn-light" style="background-color: red;" id="delete">Delete</button></td>
     `
     document.querySelector('#table-body').append(tableRow)
